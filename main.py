@@ -82,7 +82,7 @@ def train_models(X_train, y_train, classifiers):
     models = []
     
     for name, clf in classifiers.items():
-        params = hyperparameter_selection(name)
+        # params = hyperparameter_selection(name)
         st.write(f"Training {name} with params: {params}")
         clf.set_params(**params)
         clf.fit(X_train, y_train)
