@@ -78,17 +78,17 @@ def preprocess_text(data, method='tfidf'):
 #     return params
 
 # Train models
-def train_models(X_train, y_train, classifiers):
-    models = []
+# def train_models(X_train, y_train, classifiers):
+#     models = []
     
-    for name, clf in classifiers.items():
-        # params = hyperparameter_selection(name)
-        st.write(f"Training {name} with params: {params}")
-        clf.set_params(**params)
-        clf.fit(X_train, y_train)
-        models.append((name, clf))
+#     for name, clf in classifiers.items():
+#         # params = hyperparameter_selection(name)
+#         st.write(f"Training {name} with params: {params}")
+#         clf.set_params(**params)
+#         clf.fit(X_train, y_train)
+#         models.append((name, clf))
     
-    return models
+#     return models
 
 # Display accuracy of each model
 def display_accuracy(models, X_test, y_test):
