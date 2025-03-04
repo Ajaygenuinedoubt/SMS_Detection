@@ -39,56 +39,56 @@ def preprocess_text(data, method='tfidf'):
     y = data['label'].map({'ham': 0, 'spam': 1})  # Convert 'ham' to 0 and 'spam' to 1
     return X, y, vectorizer
 
-# Sidebar to select hyperparameters
-# def hyperparameter_selection(classifier_name):
-#     params = {}
+Sidebar to select hyperparameters
+def hyperparameter_selection(classifier_name):
+    params = {}
     
-#     if classifier_name == "RandomForest":
-#         n_estimators = st.sidebar.slider("n_estimators", 50, 200, 100)
-#         max_depth = st.sidebar.slider("max_depth", 1, 20, 10)
-#         min_samples_split = st.sidebar.slider("min_samples_split", 2, 10, 2)
-#         params = {'n_estimators': n_estimators, 'max_depth': max_depth, 'min_samples_split': min_samples_split}
+    if classifier_name == "RandomForest":
+        n_estimators = st.sidebar.slider("n_estimators", 50, 200, 100)
+        max_depth = st.sidebar.slider("max_depth", 1, 20, 10)
+        min_samples_split = st.sidebar.slider("min_samples_split", 2, 10, 2)
+        params = {'n_estimators': n_estimators, 'max_depth': max_depth, 'min_samples_split': min_samples_split}
         
-#     elif classifier_name == "GradientBoosting":
-#         n_estimators = st.sidebar.slider("n_estimators", 50, 200, 100)
-#         learning_rate = st.sidebar.slider("learning_rate", 0.01, 0.5, 0.1)
-#         max_depth = st.sidebar.slider("max_depth", 1, 10, 3)
-#         params = {'n_estimators': n_estimators, 'learning_rate': learning_rate, 'max_depth': max_depth}
+    elif classifier_name == "GradientBoosting":
+        n_estimators = st.sidebar.slider("n_estimators", 50, 200, 100)
+        learning_rate = st.sidebar.slider("learning_rate", 0.01, 0.5, 0.1)
+        max_depth = st.sidebar.slider("max_depth", 1, 10, 3)
+        params = {'n_estimators': n_estimators, 'learning_rate': learning_rate, 'max_depth': max_depth}
         
-#     elif classifier_name == "LogisticRegression":
-#         C = st.sidebar.slider("C", 0.01, 1.0, 0.1)
-#         max_iter = st.sidebar.slider("max_iter", 100, 500, 200)
-#         params = {'C': C, 'max_iter': max_iter}
+    elif classifier_name == "LogisticRegression":
+        C = st.sidebar.slider("C", 0.01, 1.0, 0.1)
+        max_iter = st.sidebar.slider("max_iter", 100, 500, 200)
+        params = {'C': C, 'max_iter': max_iter}
         
-#     elif classifier_name == "SVM":
-#         C = st.sidebar.slider("C", 0.01, 1.0, 0.1)
-#         kernel = st.sidebar.selectbox("kernel", ["linear", "rbf"])
-#         params = {'C': C, 'kernel': kernel}
+    elif classifier_name == "SVM":
+        C = st.sidebar.slider("C", 0.01, 1.0, 0.1)
+        kernel = st.sidebar.selectbox("kernel", ["linear", "rbf"])
+        params = {'C': C, 'kernel': kernel}
         
-#     elif classifier_name == "KNN":
-#         n_neighbors = st.sidebar.slider("n_neighbors", 3, 10, 5)
-#         weights = st.sidebar.selectbox("weights", ["uniform", "distance"])
-#         params = {'n_neighbors': n_neighbors, 'weights': weights}
+    elif classifier_name == "KNN":
+        n_neighbors = st.sidebar.slider("n_neighbors", 3, 10, 5)
+        weights = st.sidebar.selectbox("weights", ["uniform", "distance"])
+        params = {'n_neighbors': n_neighbors, 'weights': weights}
         
-#     elif classifier_name == "AdaBoost":
-#         n_estimators = st.sidebar.slider("n_estimators", 50, 200, 100)
-#         learning_rate = st.sidebar.slider("learning_rate", 0.01, 1.0, 0.1)
-#         params = {'n_estimators': n_estimators, 'learning_rate': learning_rate}
+    elif classifier_name == "AdaBoost":
+        n_estimators = st.sidebar.slider("n_estimators", 50, 200, 100)
+        learning_rate = st.sidebar.slider("learning_rate", 0.01, 1.0, 0.1)
+        params = {'n_estimators': n_estimators, 'learning_rate': learning_rate}
     
-#     return params
+    return params
 
-# Train models
-# def train_models(X_train, y_train, classifiers):
-#     models = []
+Train models
+def train_models(X_train, y_train, classifiers):
+    models = []
     
-#     for name, clf in classifiers.items():
-#         # params = hyperparameter_selection(name)
-#         st.write(f"Training {name} with params: {params}")
-#         clf.set_params(**params)
-#         clf.fit(X_train, y_train)
-#         models.append((name, clf))
+    for name, clf in classifiers.items():
+        # params = hyperparameter_selection(name)
+        st.write(f"Training {name} with params: {params}")
+        clf.set_params(**params)
+        clf.fit(X_train, y_train)
+        models.append((name, clf))
     
-#     return models
+    return models
 
 # Display accuracy of each model
 def display_accuracy(models, X_test, y_test):
